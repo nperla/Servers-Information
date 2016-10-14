@@ -1,0 +1,4 @@
+-- To get the queue information from any server host 
+echo ---------qdc4prime01---------;curl -s http://qdc4prime01.mps.spscommerce.net:8000 | grep ^XG_ | sed -e 's/<br>//g'
+echo ---------qehprime01---------;curl -s http://qehprime01.mps.spscommerce.net:8000 | grep ^ERRORHOSPITAL_ | sed -e 's/<br>//g'
+echo ---------qfiprime01---------;curl -s http://qfiprime01.us-east-1.spsprod.in:8000 | grep xg | grep -E 'large|small' | sed -e 's/<br>//g'
