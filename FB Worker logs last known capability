@@ -1,0 +1,11 @@
+#!/bin/bash
+# This script is meant to run on any server that contains filebroker logs. 
+# This script will print out the last known capability uid that a given worked worked on.
+
+
+for f in $(comm -3 <(ls /u01/eventd/filebroker2/logs/FileBrokerWorker-0?.log) <(ls /u01/eventd/filebroker2/logs/FileBrokerWorker-{0..200}.log))
+do
+	filename=$(basename $f)
+	echo -n "$filename - "
+	grep CapabilityUID $f | tail -n1 | awk -F'CapabilityUID' '{print "CapabilityUID"$2}' | cut -d' ' -f1
+done
