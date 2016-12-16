@@ -1,0 +1,8 @@
+--To know the capability is running or not in sumo 
+
+
+_index=fb_logs _sourceCategory=app_fb_worker_* 
+| parse "\"MessageSizeBytes\":\"*\"" as Bytes nodrop
+| parse "\"CapabilityUid\":\"*\"" as CapUID
+| where CapUID in ("1090068")
+| sum(bytes) by CapUid | sort by _sum desc
