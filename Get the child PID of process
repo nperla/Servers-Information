@@ -1,0 +1,6 @@
+#!/bin/bash
+# This script takes a PID from the App Manager UI and returns the Child Process
+# PID. In this example, 19109 was shown in App Mgr
+
+
+ps -o pid,command --ppid 19109
