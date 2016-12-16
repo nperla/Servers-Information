@@ -1,0 +1,5 @@
+-- To get the AS2 cluster information on logs (we can check both clusters 1,2,..5)
+_index=as2_logs "error"
+| if (_sourcehost in ("as2app11.mps.spscommerce.net","as2app12.mps.spscommerce.net","as2app13.mps.spscommerce.net","as2app14.mps.spscommerce.net","as2app15.mps.spscommerce.net","as2app16.mps.spscommerce.net"), 1, 0) as cls1 
+| timeslice 10m 
+| sum(cls1) as cls1 by _timeslice
